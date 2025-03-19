@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block content %}
+<body class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
+    <div class="container p-4 bg-secondary rounded shadow" style="max-width: 400px; width: 100%;">
+        <h2 class="mb-4 text-center"><i class="fas fa-plus"></i> Add Review</h2>
+        <form method="post">
+            {% csrf_token %} 
+            {%for i in form%}
+            <div class="mb-3">
+                {{i.label}}
+                {{i}}
+            </div>
+            {%endfor%}
+                        <button type="submit" class="btn btn-primary w-100">Add Review</button>
+        </form>
+    </div>
+{%endblock%}

@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block content %}
+<body class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
+    <div class="container text-center">
+        <h1 class="mb-4"><i class="fas fa-film"></i> Movie Review App</h1>
+        <p class="lead">Share your thoughts on your favorite movies!</p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="{% url 'addmovie'%}" class="btn btn-primary btn-lg"><i class="fas fa-plus"></i> Add Movie</a>
+            <a href="{% url 'addreview'%}" class="btn btn-success btn-lg"><i class="fas fa-edit"></i> Add Review</a>
+        </div>
+    </div>
+
+    {% endblock %}
