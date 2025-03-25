@@ -1,21 +1,41 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
-<body class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
-    <div class="container p-4 bg-secondary rounded shadow" style="max-width: 400px; width: 100%;">
-        <h2 class="mb-4 text-center"><i class="fas fa-plus"></i> Add Movie</h2>
-        <form method="post">
-            {% csrf_token %} 
-            {%for i in form%}
-            <div class="mb-3">
-                {{i.label}}
-                {{i}}
-            </div>
-            {%endfor%}
-                        <button type="submit" class="btn btn-primary ">Add Movie</button>
-                        <br><br>
-                        <a href="{% url 'allmovies'%}" class="btn btn-danger">Cancel</a>
 
+<div class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
+    <div class="container p-4 bg-secondary rounded shadow-lg" style="max-width: 600px; width: 100%;">
+        <h2 class="mb-4 text-center fw-bold">
+            <i class="fas fa-film text-warning"></i> Add Movie
+        </h2>
+
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+
+            {% for field in form %}
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label fw-semibold text-end">{{ field.label }}</label>
+                <div class="col-sm-8">
+                    {{ field }}
+                    {% if field.errors %}
+                    <div class="text-danger small mt-1">
+                        {% for error in field.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                    <i class="fas fa-plus-circle"></i> Add Movie
+                </button>
+                <a href="{% url 'movies' %}" class="btn btn-outline-light btn-lg shadow-sm">
+                    <i class="fas fa-times-circle"></i> Cancel
+                </a>
+            </div>
         </form>
     </div>
+</div>
 
-{%endblock%}
+{% endblock %}

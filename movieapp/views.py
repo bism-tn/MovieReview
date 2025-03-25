@@ -69,14 +69,18 @@ class AddMovieView(View):
         form = Movieform(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("allmovies")
+            return redirect("movies")
         return render(request, "addmovie.html", {"form": form})
 
 @method_decorator(is_login, name='dispatch')
 class ShowMovieView(View):
     def get(self, request):
-        data = Movie.objects.all()
-        return render(request, "showmovie.html", {"form": data})
+        data = Movie.objects.all().order_by('-release_date')  
+        return render(request, "newrelease.html", {"form": data})
+
+
+
+        
 
 @method_decorator(is_login, name='dispatch')
 class UpdateMovieView(View):
@@ -90,7 +94,7 @@ class UpdateMovieView(View):
         form = Movieform(request.POST, instance=data)
         if form.is_valid():
             form.save()
-            return redirect("allmovies")
+            return redirect("movies")
         return render(request, "updatemovie.html", {"form": form})
 
 @method_decorator(is_login, name='dispatch')
@@ -150,6 +154,13 @@ class DeleteReviewView(View):
 class Home(View):
     def get(self, request):
         return render(request, 'home.html')
+    
+class AllmoviesView(View):
+    def get(self, request):
+        data = Movie.objects.all().order_by('-release_date')  # Sort by newest release date first
+        return render(request, "showmovie.html", {"form": data})
+
+        
 
 
 @method_decorator(is_login, name='dispatch')

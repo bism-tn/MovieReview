@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from movieapp.views import UserRegistrationView,Signout,ReviewListView,LoginView,AddMovieView,AddReviewView,ShowMovieView,ShowMyReviewView,ShowReviewView,UpdateMovieView,UpdateReviewView,DeleteMovieView,DeleteReviewView,Home
+from movieapp.views import AllmoviesView,UserRegistrationView,Signout,ReviewListView,LoginView,AddMovieView,AddReviewView,ShowMovieView,ShowMyReviewView,ShowReviewView,UpdateMovieView,UpdateReviewView,DeleteMovieView,DeleteReviewView,Home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ReviewApp/signup',UserRegistrationView.as_view(),name='signup'),
@@ -33,6 +33,10 @@ urlpatterns = [
     path('ReviewApp/DeleteReview/<int:pk>',DeleteReviewView.as_view(),name='deletereview'),
     
     path('ReviewApp/ShowMovie',ShowMovieView.as_view(),name="allmovies"),
+ 
+    path('ReviewApp/movies',AllmoviesView.as_view(),name="movies"),
+ 
+    
     path('ReviewApp/ShowReview',ShowReviewView.as_view(),name="allreviews"),
     path('ReviewApp/MyReview',ShowMyReviewView.as_view(),name="myreviews"),
 

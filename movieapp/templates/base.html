@@ -59,18 +59,14 @@
                 <li class="list-group-item bg-dark text-white">
                     <a href="" class="text-white"><i class="fas fa-user-circle"></i> Profile</a>
                 </li>
+
                 <li class="list-group-item bg-dark text-white">
-                    <a href="" class="text-white"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="{% url 'movies' %}" class="text-white"><i class="fas fa-star"></i> Add Movies</a>
                 </li>
                 <li class="list-group-item bg-dark text-white">
-                    <a href="{% url 'myreviews' %}" class="text-white"><i class="fas fa-star"></i> My Reviews</a>
+                    <a href="{% url 'allreviews' %}" class="text-white"><i class="fas fa-film"></i> My Reviews</a>
                 </li>
-                <li class="list-group-item bg-dark text-white">
-                    <a href="{% url 'allreviews' %}" class="text-white"><i class="fas fa-film"></i> All Reviews</a>
-                </li>
-                <li class="list-group-item bg-dark text-white">
-                    <a href="{% url 'allmovies' %}" class="text-white"><i class="fas fa-film"></i> Recent Releases</a>
-                </li>
+  
                 <li class="list-group-item bg-danger text-white">
                     <a href="{% url 'signout' %}" class="text-white"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                 </li>
